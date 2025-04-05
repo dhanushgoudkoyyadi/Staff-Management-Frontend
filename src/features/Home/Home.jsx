@@ -1,10 +1,17 @@
 import React from 'react'
 import Navbar from './Navbar'
 
+import Salarydetails from '../salary/Salarydetails'
+import Salary from '../admin/Salary'
+
 function Home() {
   return (
-  <Navbar></Navbar>
-
+  
+  
+ <div>
+  <Salary/>
+  <Salarydetails></Salarydetails>
+ </div>
   )
 }
 

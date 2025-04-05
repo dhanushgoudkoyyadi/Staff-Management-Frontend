@@ -19,8 +19,26 @@ export const StaffApi = createApi({
         method: 'POST',
         body: credentials
       })
+    }),
+    addsalary: build.mutation({
+      query: (data) => ({
+        url: '/salary',
+        method: 'POST',
+        body: data
+      })
+    }),
+    getSalary: build.mutation({
+      query: (data) => ({
+        url: '/register',
+        method: 'GET',
+        body: data
+      })
     })
+
   })
+  
 });
 
-export const{ useSignupMutation}=StaffApi
+export const{ useSignupMutation,
+  useAddsalaryMutation
+}=StaffApi
