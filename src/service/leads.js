@@ -17,7 +17,7 @@ export const StaffApi = createApi({
       query: (credentials) => ({
         url: '/register',
         method: 'POST',
-        body: credentials
+        body: credentials // Ensure the payload matches API expectations
       })
     }),
     addsalary: build.mutation({
@@ -27,18 +27,33 @@ export const StaffApi = createApi({
         body: data
       })
     }),
-    getSalary: build.mutation({
-      query: (data) => ({
-        url: '/register',
-        method: 'GET',
-        body: data
+    getSalary: build.query({ // Changed to query for GET
+      query: () => ({
+        url: '/getsalary',
+        method: 'GET'
+      })
+    }),
+    login: build.mutation({
+      query: (credentials) => ({
+        url: '/login',
+        method: 'POST',
+        body: credentials
+      })
+    }),
+    submitEmployee: build.mutation({
+      query: ({ userId, formData }) => ({
+        url: `/employees/${userId}`,
+        method: 'POST',
+        body: formData
       })
     })
-
   })
-  
 });
 
-export const{ useSignupMutation,
-  useAddsalaryMutation
-}=StaffApi
+export const {
+  useSignupMutation,
+  useLoginMutation,
+  useAddsalaryMutation,
+  useGetSalaryQuery, // Adjusted for 'getSalary'
+  useSubmitEmployeeMutation
+} = StaffApi;
