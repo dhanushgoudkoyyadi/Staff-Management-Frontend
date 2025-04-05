@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSignupMutation } from "../../leads";
-
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -49,7 +49,7 @@ function Register() {
       const response = await signup({ username, password, mobileNumber, email, gender }).unwrap();
       localStorage.setItem('token', response.token);
       alert('Signup successful!');
-      navigate('/Home');
+      navigate('/Dashboard');
     } catch (err) {
       alert('Signup failed. Please try again.');
     }
